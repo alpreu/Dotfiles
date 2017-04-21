@@ -124,7 +124,7 @@ autocmd Filetype markdown inoremap <S-cr> <space><space><cr>
 "dont screw with markup files"
 let blacklist = ['markdown']
 "display indentation guides
-set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+set list listchars=tab:⟩\ ,trail:·,extends:»,precedes:«,nbsp:×
 "convert spaces to tabs when reading file
 autocmd! bufreadpost * if &modifiable && index(blacklist, &ft) < 0 | set noexpandtab | retab! 4
 "convert tabs to spaces before writing file
