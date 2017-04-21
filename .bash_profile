@@ -40,7 +40,7 @@ function prompt_command {
 }
 PROMPT_COMMAND=prompt_command
 
-source ~/.git-prompt.sh
+source ~/.dotfiles/.git-prompt.sh
 export GIT_PS1_SHOWDIRTYSTATE=1 # indicate local changes
 
 PS1='$TIMELINE \t
