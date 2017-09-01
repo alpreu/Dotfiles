@@ -1,6 +1,8 @@
 set nocompatible "required for vundle
 filetype off "required for vundle
 
+"set runtimepath to include fzf
+set rtp+=/usr/local/opt/fzf
 "set runtimepath to include vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,6 +14,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'ervandew/supertab'
 "Autocompletion for Python
 Plugin 'davidhalter/jedi-vim'
+"Better syntax for js
+Plugin 'jelera/vim-javascript-syntax'
 "Snippets for faster coding
 Plugin 'garbas/vim-snipmate'
 "snippets for VimSnipmate
@@ -77,19 +81,35 @@ ino <up> <Nop>
 "map leader to comma
 let mapleader=","
 
+"linenumbers
+set number
+
+"map space to :
+noremap <space> :
+
+"buffer navigation
+set hidden "suppresses warning when switching unsaved buffers
+map <C-l> :bn<CR>
+map <C-h> :bp<CR>
+
 "map jj to escape in insertmode
 inoremap jj <esc>
 
 "search before pressing enter
 set incsearch
 "highlight matches
-set hlsearch
+"set hlsearch
 
 "search recursively into subfolders for easy navigation
 set path+=**
 
-"hide netrw banner on tree
+"netrw as file explorer config
 let g:netrw_banner=0
+let g:netrw_liststyle=3
+let g:netrw_browse_split=4
+let g:netrw_altv=1
+let g:netrw_winsize=12
+noremap <C-e> :Lexplore<CR>
 
 "show keypresses
 set showcmd
@@ -105,13 +125,13 @@ if has("gui_macvim")
     set guifont=InputMonoCompressed:h13
     "automatically resize splits when resizing window
     autocmd VimResized * wincmd =
+    "don't show scrollbars
+    set guioptions-=r
+    set guioptions-=l
 endif
 
 "highlight current working line
 set cursorline
-
-"linenumbers
-set number
 
 "always use status bar
 set laststatus=2
@@ -121,7 +141,7 @@ set tabstop=4 softtabstop=4 shiftwidth=4
 "markdown specific config
 autocmd BufNewFile,BufRead *.md set filetype=markdown
 autocmd Filetype markdown inoremap <S-cr> <space><space><cr>
-"dont screw with markup files"
+"dont screw with markup files
 let blacklist = ['markdown']
 "display indentation guides
 set list listchars=tab:⟩\ ,trail:·,extends:»,precedes:«,nbsp:×
