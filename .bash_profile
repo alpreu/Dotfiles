@@ -10,6 +10,12 @@ eval "$(jenv init -)"
 # load rvm into shell session
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# virtualenv for python stuff
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source /usr/local/bin/virtualenvwrapper.sh
+
 # opinionated defaults
 alias ..="cd .."
 alias cp="cp -ai"
@@ -17,6 +23,8 @@ alias mv="mv -i"
 alias ls="ls -G"
 alias l="ls -al"
 alias grep="grep --color=always"
+alias pass="pass -c"
+
 
 mkcd () {
     mkdir "$1" &&
@@ -51,6 +59,8 @@ PS1='$TIMELINE \t
 \[\033[1;32m\]\u \[\033[0;37m\]at \[\033[1;38;5;45m\]\h \[\033[0;37m\]in \[\033[1;31m\]\w \[\033[33m\]$(__git_ps1 "(%s)")
 \[\033[37m\]😎  \[\033[m\]'
 
-source /usr/local/etc/bash_completion.d/pass
+#source /usr/local/etc/bash_completion.d/pass
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

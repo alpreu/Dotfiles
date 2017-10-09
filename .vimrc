@@ -8,6 +8,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "Vundle should manage itself
 Plugin 'VundleVim/Vundle.vim'
+"useful startscreen
+Plugin 'mhinz/vim-startify'
 "autocompletion for brackets and stuff
 Plugin 'Raimondi/delimitMate'
 "tab completion
