@@ -33,8 +33,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ntpeters/vim-better-whitespace'
 "Add smooth scrolling for easier navigation
 Plugin 'yonchu/accelerated-smooth-scroll'
+"FZF integration
+Plugin 'junegunn/fzf.vim'
 "easily create tables (in markdown)
 Plugin 'dhruvasagar/vim-table-mode'
+"Live preview for substitutions
+Plugin 'xtal8/traces.vim'
 let g:table_mode_corner="|"
 "Colorschemes
 Plugin 'morhetz/gruvbox'
@@ -64,11 +68,13 @@ let g:airline#extensions#tabline#fnamemod=':t'
 "blue unwanted whitespace highlighting
 highlight ExtraWhitespace ctermbg=blue guibg=#808080
 
-"show $ sign on change selection for visual help
-set cpoptions+=$
-
 "python interactive mode :)
 nmap <F8> :!python3 % <CR>
+
+"suppress startify quote and ascii art
+let g:startify_custom_header = []
+"list only 5 files per startify category
+let g:startify_files_number = 5
 
 "unmap arrowkeys
 no <down> <Nop>
@@ -124,7 +130,8 @@ nmap <leader>md :%!/usr/local/bin/Markdown.pl --html4tags <cr>
 
 "MacVim GUI Mode configuration
 if has("gui_macvim")
-    set guifont=InputMonoCompressed:h13
+    "set guifont=InputMonoCompressed:h13
+    set guifont=Operator\ Mono\ Book:h13
     "automatically resize splits when resizing window
     autocmd VimResized * wincmd =
     "don't show scrollbars
