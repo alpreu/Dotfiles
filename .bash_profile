@@ -16,6 +16,12 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
 
+# load custom python repl config
+export PYTHONSTARTUP=$HOME/.pythonstartup
+
+# use the one and only editor
+export EDITOR=/usr/bin/vim
+
 # opinionated defaults
 alias ..="cd .."
 alias cp="cp -ai"
@@ -23,13 +29,24 @@ alias mv="mv -i"
 alias ls="ls -G"
 alias l="ls -al"
 alias grep="grep --color=always"
-alias pass="pass -c"
 
+ftpup () {
+    sftp alex@$1:/home/alex <<< $"put $2"
+}
+
+ftpdown () {
+    sftp alex@$1:$2 $3
+}
 
 mkcd () {
     mkdir "$1" &&
     cd "$1"
 }
+
+diffls() {
+    diff -y <(ls "$1") <(ls "$2")
+}
+
 
 # faster access to some programs
 alias py="python3"
@@ -37,7 +54,12 @@ alias firefox="open -a firefox"
 alias 'class-dump'="/Applications/class-dump"
 alias tldr="tldr find"
 alias mongod="mongod --config /usr/local/etc/mongod.conf"
-
+alias gs="git status"
+alias gd="git diff"
+alias ga="git add"
+alias gau="git add -u"
+alias gc="git commit -m"
+alias gl="git log"
 alias battery="pmset -g batt"
 
 # fancy prompt
